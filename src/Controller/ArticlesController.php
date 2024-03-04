@@ -21,10 +21,17 @@ $articles= $entityManager->getRepository(Article::class)->findAll();
     }
 
     #[Route('/articles/{id}', name: 'app_get_article_by_id')]
-    public function getArticleById(): Response
+    public function getArticleById(
+        EntityManagerInterface $entityManager,
+        int $id
+    ): Response
+    //  pour avoir l'id, on appelle l'entity manager et l'argument
     {
+        $article= $entityManager->getRepository(Article::class)->find($id);
+//  pour avoir l'article, on utilise la fonction find qui a été prdéfinie par symfony
+//  puis on s'en sert pour la vue
         return $this->render('articles/show_article.html.twig', [
-            'controller_name' => 'ArticlesController',
+            'article' => $article,
         ]);
     }
 }

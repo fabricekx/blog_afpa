@@ -6,7 +6,8 @@
 {% block body %}
 	<ul>
 		{% for article in articles %}
-			<li>{{ article.title }}</li>
+		{# on fait une liste avec les chemin vers le controller et l'argument id #}
+			<li><a href=" {{ path('app_get_article_by_id', {id : article.id} )}}">{{ article.title }}</a></li>
 		{% endfor %}
 	</ul>
 {% endblock %}

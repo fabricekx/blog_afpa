@@ -4,6 +4,17 @@
 {% endblock %}
 
 {% block body %}
+
+	<ul class="list-group">
+		{% for category in categories %}
+			<li>
+				<a href="{{path('app_get_article_by_category', {id_category : category.id})}}" class="list-group-item">{{category.title}}</a>
+			</li>
+
+		{% endfor %}
+	</ul>
+
+
 	{# interpollation: affichage de la variable dans la page #}
 	{{fabrice}}
 	<ul>
@@ -22,6 +33,14 @@
 			<a href=" {{ path('app_articles')}}">Liste des articles
 
 			</a>
+
 		</li>
+<li>
+			<a href=" {{ path('app_contact')}}">Contact
+
+			</a>
+
+		</li>
+
 	</ul>
 {% endblock %}
